@@ -4,6 +4,4 @@ libhcx.a: binary.o class.o ternary.o unary.o
 	ar rcs libhcx.a *.o
 
 clean:
-	rm -f *~ .*~
-	rm -f *.o
-	rm -f libhcx.a
+	rm -f *~ .*~ *.o libhcx.a
