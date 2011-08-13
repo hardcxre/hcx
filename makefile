@@ -1,4 +1,6 @@
-libhardcxre.a: class.o
+CFLAGS=-ansi -o3 -Wall -Werror
+
+libhardcxre.a: binary.o class.o ternary.o unary.o
 	ar rcs libhardcxre.a *.o
 
 clean:
