@@ -1,9 +1,10 @@
+#include "line.h"
 #include "standard.h"
 #include "trace.h"
 #include "unary.h"
 
 struct hcx_unary_t {
-  hcx_class_t returns[HCX_CLASS_COUNT];
+  hcx_line_t returns;
 };
 
 hcx_class_t hcx_unary_classify(hcx_unary_t *unary, hcx_class_t argument)
