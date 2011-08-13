@@ -1,8 +1,8 @@
 #ifndef hcx_point_h
 #define hcx_point_h
 
-#include "class.h"
+#include "value.h"
 
-typedef hcx_class_t hcx_point_t;
+typedef hcx_value_t hcx_point_t;
 
 #endif

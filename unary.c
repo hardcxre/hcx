@@ -7,7 +7,7 @@ struct hcx_unary_t {
   hcx_line_t returns;
 };
 
-hcx_class_t hcx_unary_classify(hcx_unary_t *unary, hcx_class_t argument)
+hcx_value_t hcx_unary_operate(hcx_unary_t *unary, hcx_value_t argument)
 {
   return *(unary->returns + argument);
 }
@@ -19,8 +19,8 @@ hcx_unary_t *hcx_unary_create()
 
   unary = malloc(sizeof *unary);
   if (unary) {
-    for (i = 0; i < HCX_CLASS_COUNT; i++) {
-      *(unary->returns + i) = rand() % HCX_CLASS_COUNT;
+    for (i = 0; i < HCX_VALUE_COUNT; i++) {
+      *(unary->returns + i) = rand() % HCX_VALUE_COUNT;
     }
   } else {
     hcx_trace("malloc");

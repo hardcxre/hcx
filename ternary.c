@@ -7,8 +7,8 @@ struct hcx_ternary_t {
   hcx_space_t returns;
 };
 
-hcx_class_t hcx_ternary_classify(hcx_ternary_t *ternary,
-    hcx_class_t argument_1, hcx_class_t argument_2, hcx_class_t argument_3)
+hcx_value_t hcx_ternary_operate(hcx_ternary_t *ternary,
+    hcx_value_t argument_1, hcx_value_t argument_2, hcx_value_t argument_3)
 {
   return ternary->returns[argument_1][argument_2][argument_3];
 }
@@ -22,10 +22,10 @@ hcx_ternary_t *hcx_ternary_create()
 
   ternary = malloc(sizeof *ternary);
   if (ternary) {
-    for (i = 0; i < HCX_CLASS_COUNT; i++) {
-      for (j = 0; j < HCX_CLASS_COUNT; j++) {
-        for (k = 0; k < HCX_CLASS_COUNT; k++) {
-          ternary->returns[i][j][k] = rand() % HCX_CLASS_COUNT;
+    for (i = 0; i < HCX_VALUE_COUNT; i++) {
+      for (j = 0; j < HCX_VALUE_COUNT; j++) {
+        for (k = 0; k < HCX_VALUE_COUNT; k++) {
+          ternary->returns[i][j][k] = rand() % HCX_VALUE_COUNT;
         }
       }
     }

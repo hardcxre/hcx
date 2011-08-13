@@ -1,8 +1,8 @@
 #ifndef hcx_plane_h
 #define hcx_plane_h
 
-#include "class.h"
+#include "value.h"
 
-typedef hcx_class_t hcx_plane_t[HCX_CLASS_COUNT][HCX_CLASS_COUNT];
+typedef hcx_value_t hcx_plane_t[HCX_VALUE_COUNT][HCX_VALUE_COUNT];
 
 #endif

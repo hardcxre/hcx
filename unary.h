@@ -1,12 +1,12 @@
 #ifndef hcx_unary_h
 #define hcx_unary_h
 
-#include "class.h"
+#include "value.h"
 
 struct hcx_unary_t;
 typedef struct hcx_unary_t hcx_unary_t;
 
-hcx_class_t hcx_unary_classify(hcx_unary_t *unary, hcx_class_t argument);
+hcx_value_t hcx_unary_operate(hcx_unary_t *unary, hcx_value_t argument);
 
 hcx_unary_t *hcx_unary_create();
 

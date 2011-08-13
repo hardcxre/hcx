@@ -1,9 +1,9 @@
 #ifndef hcx_space_h
 #define hcx_space_h
 
-#include "class.h"
+#include "value.h"
 
-typedef hcx_class_t
-hcx_space_t[HCX_CLASS_COUNT][HCX_CLASS_COUNT][HCX_CLASS_COUNT];
+typedef hcx_value_t
+hcx_space_t[HCX_VALUE_COUNT][HCX_VALUE_COUNT][HCX_VALUE_COUNT];
 
 #endif
