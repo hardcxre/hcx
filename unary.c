@@ -1,5 +1,5 @@
 #include "standard.h"
-#include "tools.h"
+#include "trace.h"
 #include "unary.h"
 
 struct hcx_unary_t {
@@ -22,7 +22,7 @@ hcx_unary_t *hcx_unary_create()
       *(unary->returns + i) = rand() % HCX_CLASS_COUNT;
     }
   } else {
-    hcx_tools_trace("malloc");
+    hcx_trace("malloc");
   }
 
   return unary;
