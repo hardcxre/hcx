@@ -1,6 +1,7 @@
-#ifndef hardcxre_class_h
-#define hardcxre_class_h
+#ifndef hcx_class_h
+#define hcx_class_h
 
-typedef unsigned char hardcxre_class_t;
+typedef unsigned char hcx_class_t;
+#define HCX_CLASS_COUNT 256
 
 #endif

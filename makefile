@@ -1,9 +1,9 @@
-CFLAGS=-ansi -o3 -Wall -Werror
+CFLAGS=-ansi -pedantic -Wall -Werror -o3
 
-libhardcxre.a: binary.o class.o ternary.o unary.o
-	ar rcs libhardcxre.a *.o
+libhcx.a: binary.o class.o ternary.o unary.o
+	ar rcs libhcx.a *.o
 
 clean:
 	rm -f *~ .*~
 	rm -f *.o
-	rm -f libhardcxre.a
+	rm -f libhcx.a

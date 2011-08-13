@@ -1,0 +1,21 @@
+hardcxre (pronounced "hardcore") is a cellular/genetic operating system.
+
+what the hell is a cellular/genetic operating system?  it's a system that
+supports the building and running of cellular and genetic programs.  in the
+past, you would write a program for a particular purpose, with very specific
+code designed to do a very narrow series of things.  in a cellular/genetic
+operating environment, you don't write programs like that.  instead, you set in
+motion systems whose behavior you don't fully understand.  you set in motion
+emergent systems.  you define parameters of activity, rather than procedures of
+activity.
+
+building software in a cellular/genetic os is less like programming and more
+like gardening.  you eschew the illusion of total control, and you open
+yourself and your software to the possibility that something unexpected will
+happen.  something better than you ever could have planned.
+
+hardcxre lets you tend such gardens.
+
+it is free, open source, and written entirely in ansi c.  its only dependency
+is the standard library.  so you can use it anywhere.  to built it, just type
+"make".
