@@ -4,12 +4,12 @@
 #include "unary.h"
 
 struct hcx_unary_t {
-  hcx_line_t returns;
+  hcx_line_t values;
 };
 
 hcx_value_t hcx_unary_operate(hcx_unary_t *unary, hcx_value_t argument)
 {
-  return *(unary->returns + argument);
+  return unary->values[argument];
 }
 
 hcx_unary_t *hcx_unary_create()
@@ -20,7 +20,7 @@ hcx_unary_t *hcx_unary_create()
   unary = malloc(sizeof *unary);
   if (unary) {
     for (i = 0; i < HCX_VALUE_COUNT; i++) {
-      *(unary->returns + i) = rand() % HCX_VALUE_COUNT;
+      *(unary->values + i) = rand() % HCX_VALUE_COUNT;
     }
   } else {
     hcx_trace("malloc");

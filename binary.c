@@ -4,13 +4,13 @@
 #include "trace.h"
 
 struct hcx_binary_t {
-  hcx_plane_t returns;
+  hcx_plane_t values;
 };
 
 hcx_value_t hcx_binary_operate(hcx_binary_t *binary, hcx_value_t argument_1,
     hcx_value_t argument_2)
 {
-  return binary->returns[argument_1][argument_2];
+  return binary->values[argument_1][argument_2];
 }
 
 hcx_binary_t *hcx_binary_create()
@@ -23,7 +23,7 @@ hcx_binary_t *hcx_binary_create()
   if (binary) {
     for (i = 0; i < HCX_VALUE_COUNT; i++) {
       for (j = 0; j < HCX_VALUE_COUNT; j++) {
-        binary->returns[i][j] = rand() % HCX_VALUE_COUNT;
+        binary->values[i][j] = rand() % HCX_VALUE_COUNT;
       }
     }
   } else {
