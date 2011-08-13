@@ -4,6 +4,11 @@
 #include "boole.h"
 #include "value.h"
 
+/*
+  TODO: simplify: make it always competitive, remove threshold, make it always
+  positive, always exponential, and always decay
+*/
+
 #define HCX_FILTER_COMPETITIVE hcx_boole_true
 #define HCX_FILTER_NONCOMPETITIVE hcx_boole_false
 
