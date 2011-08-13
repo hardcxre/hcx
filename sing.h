@@ -1,33 +1,33 @@
-#ifndef sing_h
-#define sing_h
+#ifndef hcx_sing_h
+#define hcx_sing_h
 
 #include "boole.h"
 
-typedef unsigned char sing_scale_t;
-#define SING_SCALE_COUNT (256 - 1)
+typedef unsigned char hcx_sing_scale_t;
+#define HCX_SING_SCALE_COUNT (256 - 1)
 
-typedef char sing_dimension_t;
+typedef char hcx_sing_dimension_t;
 
-typedef unsigned char sing_point_id_t;
-#define SING_POINT_COUNT (256 - 1)
+typedef unsigned char hcx_sing_point_id_t;
+#define HCX_SING_POINT_COUNT (256 - 1)
 
-struct sing_point_t {
-  sing_dimension_t x;
-  sing_dimension_t y;
-  sing_dimension_t z;
+struct hcx_sing_point_t {
+  hcx_sing_dimension_t x;
+  hcx_sing_dimension_t y;
+  hcx_sing_dimension_t z;
 };
-typedef struct sing_point_t sing_point_t;
+typedef struct hcx_sing_point_t hcx_sing_point_t;
 
-typedef unsigned char sing_geometry_id_t;
-#define SING_GEOMETRY_COUNT (256 - 1)
+typedef unsigned char hcx_sing_geometry_id_t;
+#define HCX_SING_GEOMETRY_COUNT (256 - 1)
 
-struct sing_geometry_t {
-  sing_point_t points[SING_POINT_COUNT];
+struct hcx_sing_geometry_t {
+  hcx_sing_point_t points[HCX_SING_POINT_COUNT];
 };
-typedef struct sing_geometry_t sing_geometry_t;
+typedef struct hcx_sing_geometry_t hcx_sing_geometry_t;
 
-boole_t sing_start();
-void sing_stop();
-void sing_tick();
+hcx_boole_t hcx_sing_start();
+void hcx_sing_stop();
+void hcx_sing_tick();
 
 #endif

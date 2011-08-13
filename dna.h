@@ -1,12 +1,14 @@
-#ifndef dna_h
-#define dna_h
+#ifndef hcx_dna_h
+#define hcx_dna_h
 
 #include "boole.h"
 #include "physick.h"
 
-void dna_evolve(physick_atom_t *child, physick_atom_t *parent_a,
-    physick_atom_t *parent_b);
-boole_t dna_start();
-void dna_stop();
+void hcx_dna_evolve(hcx_physick_atom_t *child, hcx_physick_atom_t *parent_a,
+    hcx_physick_atom_t *parent_b);
+
+hcx_boole_t hcx_dna_start();
+
+void hcx_dna_stop();
 
 #endif

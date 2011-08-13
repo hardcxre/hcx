@@ -1,10 +1,10 @@
-#ifndef boole_h
-#define boole_h
+#ifndef hcx_boole_h
+#define hcx_boole_h
 
-enum boole_t {
-  boole_true = 1,
-  boole_false = 0
+enum hcx_boole_t {
+  hcx_boole_true = 1,
+  hcx_boole_false = 0
 };
-typedef enum boole_t boole_t;
+typedef enum hcx_boole_t hcx_boole_t;
 
 #endif

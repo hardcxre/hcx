@@ -1,5 +1,5 @@
-#ifndef kscope_h
-#define kscope_h
+#ifndef hcx_kscope_h
+#define hcx_kscope_h
 
 
 

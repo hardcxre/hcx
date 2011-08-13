@@ -1,6 +1,6 @@
-#ifndef declarations_h
-#define declarations_h
+#ifndef hcx_declarations_h
+#define hcx_declarations_h
 
-typedef unsigned long dna_t;
+typedef unsigned long hcx_dna_t;
 
 #endif
