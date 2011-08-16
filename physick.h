@@ -25,13 +25,10 @@ typedef struct hcx_physick_atom_t hcx_physick_atom_t;
 
 hcx_physick_element_t hcx_physick_fuse(hcx_physick_element_t function,
     hcx_physick_element_t argument);
-
 void hcx_physick_spark(hcx_physick_atom_t *atom,
     hcx_physick_atom_t *neighbor_a, hcx_physick_atom_t *neighbor_b,
     hcx_physick_atom_t *neighbor_c);
-
 hcx_boole_t hcx_physick_start();
-
 void hcx_physick_stop();
 
 #endif
