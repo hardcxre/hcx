@@ -14,7 +14,7 @@ hcx_selector_t *hcx_selector_create()
 
   selector = malloc(sizeof *selector);
   if (selector) {
-    hcx_line_randomize(&selector->values);
+    hcx_line_randomize(selector->values);
   } else {
     hcx_trace("malloc");
   }
