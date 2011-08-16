@@ -19,21 +19,21 @@ void hcx_line_push(hcx_line_t line, hcx_value_t value)
 
 void hcx_line_randomize(hcx_line_t line)
 {
-  unsigned short i;
+  unsigned short x;
 
-  for (i = 0; i < HCX_VALUE_COUNT; i++) {
-    line[i] = hcx_value_rand();
+  for (x = 0; x < HCX_VALUE_COUNT; x++) {
+    line[x] = hcx_value_rand();
   }
 }
 
 void hcx_line_shuffle(hcx_line_t line)
 {
-  unsigned short i;
+  unsigned short x;
   hcx_value_t other_position;
 
-  for (i = 0; i < HCX_VALUE_COUNT; i++) {
+  for (x = 0; x < HCX_VALUE_COUNT; x++) {
     other_position = hcx_value_rand();
-    hcx_line_swap_values(line, i, other_position);
+    hcx_line_swap_values(line, x, other_position);
   }
 }
 
@@ -47,9 +47,9 @@ void hcx_line_swap_values(hcx_line_t line, hcx_value_t position_a,
 
 void hcx_line_zero(hcx_line_t line)
 {
-  unsigned short i;
+  unsigned short x;
 
-  for (i = 0; i < HCX_VALUE_COUNT; i++) {
-    line[i] = 0;
+  for (x = 0; x < HCX_VALUE_COUNT; x++) {
+    line[x] = 0;
   }
 }
