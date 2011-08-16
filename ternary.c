@@ -16,19 +16,10 @@ hcx_value_t hcx_ternary_operate(hcx_ternary_t *ternary,
 hcx_ternary_t *hcx_ternary_create()
 {
   hcx_ternary_t *ternary;
-  unsigned short i;
-  unsigned short j;
-  unsigned short k;
 
   ternary = malloc(sizeof *ternary);
   if (ternary) {
-    for (i = 0; i < HCX_VALUE_COUNT; i++) {
-      for (j = 0; j < HCX_VALUE_COUNT; j++) {
-        for (k = 0; k < HCX_VALUE_COUNT; k++) {
-          ternary->values[i][j][k] = rand() % HCX_VALUE_COUNT;
-        }
-      }
-    }
+    hcx_space_randomize(ternary->values);
   } else {
     hcx_trace("malloc");
   }

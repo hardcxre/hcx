@@ -18,7 +18,7 @@ hcx_unary_t *hcx_unary_create()
 
   unary = malloc(sizeof *unary);
   if (unary) {
-    hcx_line_shuffle(unary->values);
+    hcx_line_randomize(unary->values);
   } else {
     hcx_trace("malloc");
   }
