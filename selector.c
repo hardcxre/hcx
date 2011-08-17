@@ -1,11 +1,11 @@
-#include "selector.h"
-#include "line.h"
 #include "max.h"
+#include "selector.h"
 #include "standard.h"
 #include "trace.h"
+#include "unary.h"
 
 struct hcx_selector_t {
-  hcx_line_t values;
+  hcx_unary_t values;
 };
 
 hcx_selector_t *hcx_selector_create()
@@ -14,7 +14,7 @@ hcx_selector_t *hcx_selector_create()
 
   selector = malloc(sizeof *selector);
   if (selector) {
-    hcx_line_randomize(selector->values);
+    hcx_unary_randomize(selector->values);
   } else {
     hcx_trace("malloc");
   }
