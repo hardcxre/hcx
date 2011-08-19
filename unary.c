@@ -5,6 +5,17 @@
 void hcx_unary_generate(hcx_unary_t *destination, hcx_unary_t *source_1,
     hcx_unary_t *source_2)
 {
+  unsigned short i;
+  unsigned short cut_point = hcx_value_rand();
+
+  for (i = 0; i < cut_point; i++) {
+    (*destination)[i] = (*source_1)[i];
+  }
+  for (i = cut_point; i < HCX_VALUE_MAX; i++) {
+    (*destination)[i] = (*source_2)[i];
+  }
+
+  (*destination)[hcx_value_rand()] = hcx_value_rand();
 }
 
 hcx_value_t hcx_unary_pull(hcx_unary_t unary)
