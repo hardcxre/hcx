@@ -12,8 +12,8 @@
 
 #define NODE_COUNT 64
 
-#define EYES_OPEN_THRESHHOLD_START_NODE 0  /*  <= NODE_COUNT - 8  */
-#define STAGNANCY_THRESHHOLD_START_NODE 8  /*  <= NODE_COUNT - 8  */
+#define EYES_OPEN_THRESHHOLD_START_NODE 16  /*  <= NODE_COUNT - 8  */
+#define STAGNANCY_THRESHHOLD_START_NODE 32  /*  <= NODE_COUNT - 8  */
 
 #define get_bit(value, bit_index) ((value >> bit_index) & 1)
 
@@ -54,10 +54,9 @@ struct manic_t {
   node_t nodes[NODE_COUNT];
   unsigned char input_count;
   unsigned char output_count;
-  unsigned char input_nodes[32];
-  unsigned char output_nodes[32];
-  node_id_t current_node;
-  state_t state;
+  node_id_t input_nodes[32];
+  node_id_t output_nodes[32];
+  /*  state_t state;  */
   float training_correlation;
   unsigned char eyes_open_threshhold;
   bool_t eyes_open_threshhold_valid;
@@ -133,6 +132,7 @@ void calculate_node_value(manic_t *manic, unsigned short node_index)
 manic_t *create(unsigned char input_count, unsigned char output_count)
 {
   manic_t *manic;
+  node_id_t i;
 
   manic = malloc(sizeof *manic);
   if (manic) {
@@ -141,6 +141,9 @@ manic_t *create(unsigned char input_count, unsigned char output_count)
     manic->output_count = output_count;
     manic->eyes_open_threshhold_valid = bool_false;
     manic->stagnancy_threshhold_valid = bool_false;
+    for (i = 0; i < 32; i++) {
+      *(manic->input_nodes + i) = random() % NODE_COUNT;
+    }
   } else {
     trace("malloc");
   }
@@ -216,6 +219,8 @@ unsigned char get_eyes_open_threshhold(manic_t *manic)
       + (4 * (manic->nodes + (EYES_OPEN_THRESHHOLD_START_NODE + 5))->value)
       + (2 * (manic->nodes + (EYES_OPEN_THRESHHOLD_START_NODE + 6))->value)
       + (1 * (manic->nodes + (EYES_OPEN_THRESHHOLD_START_NODE + 7))->value);
+    printf("--%i--\n", manic->eyes_open_threshhold);
+    exit(7);
     manic->eyes_open_threshhold_valid = bool_true;
   }
 
@@ -279,10 +284,11 @@ void input_node_value(manic_t *manic, unsigned short node_index)
   unsigned short input_node_index;
 
   old_value = node->value;
-  input_node_index = *(manic->input_nodes + node_index);
-  new_value = (manic->nodes + input_node_index)->value;
+  new_value = random() % 2;
 
-  set_node_value(manic, node_index, new_value);
+  input_node_index = *(manic->input_nodes + node_index);
+  set_node_value(manic, input_node_index, new_value);
+
   if (old_value == new_value) {
     increment_stagnancy_and_possibly_dream(manic, node_index);
   }
@@ -374,7 +380,7 @@ unsigned long wrap_index(long virtual_index, unsigned long range)
 int main(int argc, char* argv[])
 {
   manic_t *manic;
-  unsigned char input_count = 0;
+  unsigned char input_count = 4;
   unsigned char output_count = 0;
   unsigned short node_index;
   unsigned short x;
@@ -403,12 +409,26 @@ int main(int argc, char* argv[])
 
     stagnancy_threshhold = get_stagnancy_threshhold(manic);
     eyes_open_threshhold = get_eyes_open_threshhold(manic);
+    printf("%i %i ", stagnancy_threshhold, eyes_open_threshhold);
     if (manic->input_count > 0) {
+      if (stagnancy_threshhold < 128) {
+        if (eyes_open_threshhold < 128) {
+          printf("dprss");
+        } else {
+          printf("sleep");
+        }
+      } else {
+        if (eyes_open_threshhold < 128) {
+          printf("awake");
+        } else {
+          printf("manic");
+        }
+      }
     } else {
       if (stagnancy_threshhold < 128) {
-        printf("manic");
-      } else {
         printf("sleep");
+      } else {
+        printf("manic");
       }
     }
 
