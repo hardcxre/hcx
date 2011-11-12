@@ -10,7 +10,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define NODE_COUNT 140
+#define NODE_COUNT 64
 
 #define EYES_OPEN_THRESHHOLD_START_NODE 0  /*  <= NODE_COUNT - 8  */
 #define STAGNANCY_THRESHHOLD_START_NODE 8  /*  <= NODE_COUNT - 8  */
