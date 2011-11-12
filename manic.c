@@ -9,7 +9,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define NODE_COUNT 70
+#define NODE_COUNT 32
 
 #define EYES_OPEN_THRESHHOLD_START_NODE 172  /*  <= NODE_COUNT - 8  */
 #define STAGNANCY_THRESHHOLD_START_NODE 217  /*  <= NODE_COUNT - 8  */
