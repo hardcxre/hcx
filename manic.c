@@ -8,11 +8,12 @@
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
-#define NODE_COUNT 32
+#define NODE_COUNT 140
 
-#define EYES_OPEN_THRESHHOLD_START_NODE 172  /*  <= NODE_COUNT - 8  */
-#define STAGNANCY_THRESHHOLD_START_NODE 217  /*  <= NODE_COUNT - 8  */
+#define EYES_OPEN_THRESHHOLD_START_NODE 0  /*  <= NODE_COUNT - 8  */
+#define STAGNANCY_THRESHHOLD_START_NODE 8  /*  <= NODE_COUNT - 8  */
 
 #define get_bit(value, bit_index) ((value >> bit_index) & 1)
 
@@ -97,7 +98,7 @@ static void increment_stagnancy_and_possibly_dream(manic_t *manic,
     unsigned short node_index);
 static void input_node_value(manic_t *manic, unsigned short node_index);
 static void init_nodes(manic_t *manic);
-static bool_t node_is_stagnant(manic_t *manic, unsigned short node_index);
+static bool_t node_is_stagnant(manic_t *manic, node_t *node);
 static void set_node_value(manic_t *manic, unsigned short node_index,
     node_value_t value);
 static bool_t within_range(unsigned short value, unsigned short lower_bound,
@@ -256,7 +257,7 @@ void increment_stagnancy_and_possibly_dream(manic_t *manic,
   node_t *node = manic->nodes + node_index;
 
   node->stagnancy++;
-  if (node_is_stagnant(manic, node_index)) {
+  if (node_is_stagnant(manic, node)) {
     dream(manic, node_index);
   }
 }
@@ -264,10 +265,8 @@ void increment_stagnancy_and_possibly_dream(manic_t *manic,
 void init_nodes(manic_t *manic)
 {
   unsigned short node_index;
-  node_t *node;
 
   for (node_index = 0; node_index < NODE_COUNT; node_index++) {
-    node = manic->nodes + node_index;
     dream(manic, node_index);
   }
 }
@@ -289,9 +288,9 @@ void input_node_value(manic_t *manic, unsigned short node_index)
   }
 }
 
-bool_t node_is_stagnant(manic_t *manic, unsigned short node_index)
+bool_t node_is_stagnant(manic_t *manic, node_t *node)
 {
-  return node_index >= get_stagnancy_threshhold(manic);
+  return node->stagnancy >= get_stagnancy_threshhold(manic);
 }
 
 void set_node_value(manic_t *manic, unsigned short node_index,
@@ -381,6 +380,10 @@ int main(int argc, char* argv[])
   unsigned short x;
   unsigned short y;
   char c;
+  unsigned char stagnancy_threshhold;
+  unsigned char eyes_open_threshhold;
+
+  srandom(time(NULL));
 
   manic = create(input_count, output_count);
 
@@ -395,6 +398,20 @@ int main(int argc, char* argv[])
       }
       printf("%c", c);
     }
+
+    printf(" ");
+
+    stagnancy_threshhold = get_stagnancy_threshhold(manic);
+    eyes_open_threshhold = get_eyes_open_threshhold(manic);
+    if (manic->input_count > 0) {
+    } else {
+      if (stagnancy_threshhold < 128) {
+        printf("manic");
+      } else {
+        printf("sleep");
+      }
+    }
+
     printf("\n");
 
     /*  usleep(1024);  */
