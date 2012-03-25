@@ -50,9 +50,13 @@ void hcx_selector_suggest(hcx_selector_t *selector, hcx_value_t value)
   unsigned short new_value = selector->values[value];
   hcx_value_t competing_value_index;
 
-  new_value *= 2;
-  if (new_value > HCX_VALUE_MAX) {
-    new_value = HCX_VALUE_MAX;
+  if (new_value) {
+    new_value *= 2;
+    if (new_value > HCX_VALUE_MAX) {
+      new_value = HCX_VALUE_MAX;
+    }
+  } else {
+    new_value = 1;
   }
   selector->values[value] = new_value;
 
