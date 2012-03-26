@@ -21,7 +21,8 @@ void hcx_ternary_push(hcx_ternary_t ternary, hcx_value_t value)
   hcx_value_t other_position_y = hcx_value_rand();
   hcx_value_t other_position_z = hcx_value_rand();
 
-  ternary[other_position_x][other_position_y][other_position_z] = ternary[0][0][0];
+  ternary[other_position_x][other_position_y][other_position_z]
+    = ternary[0][0][0];
   ternary[0][0][0] = value;
 }
 
